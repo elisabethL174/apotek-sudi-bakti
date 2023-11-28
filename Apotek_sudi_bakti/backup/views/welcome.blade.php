@@ -10,21 +10,21 @@
         }
 
         .navbar-logo {
-            width: 45px;
-            height: 45px;
+            width: 4%;
+            height: 4%;
             margin-left: 25px;
             margin-right: 10px;
             margin-top: 0vh;
         }
 
         .navbar-brand-text {
-            font-size: 16px;
-            margin-top: 12px;
+            font-size: 1vw;
+            margin-top: 1.5vh;
             color: black;
         }
 
-        .navbar-link {
-            font-size: 16px;
+        .navbar-text {
+            font-size: 1vw;
             text-decoration: none;
             font-weight: bold;
             color: black !important;
@@ -34,8 +34,7 @@
         }
 
         .collapse {
-            margin-right: 4.5%;
-            justify-content: flex-end;
+            margin-right: 20px;
         }
 
         .hero-section {
@@ -230,50 +229,40 @@
             margin-top: 0vh;
         }
 
-        span.navbar-toggler-icon {
-            border-radius: 3px;
-            filter: invert(100%); /* Invert the color to turn it white (or your desired color) */
-        }
-
-
     </style>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
 </head>
 <body>
     <!-- Include your pharmacy logo or relevant header content here -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-        <a class="navbar-brand" href="/home">
+        <a class="navbar-brand" href="/">
             <div class="navbar-brand-clickable">
                 <img src="images/logo.png" class ="navbar-logo" alt="Product 1">
                 <h1 class="navbar-brand-text">APOTEK SUDI BAKTI</h1>
             </div>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
+                    <a class="navbar-text" href="#ingfokan">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-link" href="#">Market Place</a>
+                    <a class="navbar-text" href="#">Market Place</a>
                 </li>
                 <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                            Logout
-                        </x-dropdown-link>
-                    </form>
+                    <a class="navbar-text" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="navbar-link" href="/register">Notification</a>
+                    <a class="navbar-text" href="/register">Registrasi</a>
                 </li>
             </ul>
         </div>
     </nav>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Hero Section -->
@@ -409,7 +398,8 @@
     }
 </script>
     
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 </body>
 </html>

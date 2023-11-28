@@ -7,24 +7,90 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <style>
+            .navbar-brand-clickable {
+                display: flex;
+            }
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+            .navbar-logo {
+                width: 45px;
+                height: 45px;
+                margin-left: 25px;
+                margin-right: 10px;
+                margin-top: 0vh;
+            }
+
+            .navbar-brand-text {
+                font-size: 16px;
+                margin-top: 12px;
+                color: black;
+            }
+
+            .navbar-link {
+                font-size: 16px;
+                text-decoration: none;
+                font-weight: bold;
+                color: black !important;
+                white-space: nowrap; /* Prevents text wrapping */
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .collapse {
+                margin-right: 4.5%;
+                justify-content: flex-end;
+            }
+
+            span.navbar-toggler-icon {
+                border-radius: 3px;
+                filter: invert(100%); /* Invert the color to turn it white (or your desired color) */
+            }
+
+            .navbar-toggler:hover {
+                background-color: transparent; /* Or set it to whatever the initial state should be */
+            }
+
+        </style>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+        <div class="yuh">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+                <a class="navbar-brand" href="/">
+                    <div class="navbar-brand-clickable">
+                        <img src="images/logo.png" class ="navbar-logo" alt="Product 1">
+                        <h1 class="navbar-brand-text">APOTEK SUDI BAKTI</h1>
+                    </div>
                 </a>
-            </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-link" href="#">Market Place</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-link" href="/register">Registrasi</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            <div class="googoogaagaa">
                 {{ $slot }}
             </div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     </body>
 </html>
