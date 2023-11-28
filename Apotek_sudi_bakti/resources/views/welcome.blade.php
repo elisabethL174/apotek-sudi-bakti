@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pharmacy Dashboard</title>
     <style>
+        
         .navbar-brand-clickable {
             display: flex;
         }
@@ -206,7 +207,7 @@
 
         .right-section {
             flex: 1; /* Takes up equal horizontal space */
-            margin-left: 600px;
+            text-align: right;
         }
 
         .left-section h3 {
@@ -223,8 +224,8 @@
         }
 
         .footer-logo {
-            width: 12%;
-            height: 12%;
+            width: 50px;
+            height: 50px;
             margin-left: 5px;
             margin-right: 5px;
             margin-top: 0vh;
@@ -233,6 +234,76 @@
         span.navbar-toggler-icon {
             border-radius: 3px;
             filter: invert(100%); /* Invert the color to turn it white (or your desired color) */
+        }
+
+        @media screen and (max-width: 850px) {
+            .hero-text {
+                font-size: 4vw; /* Adjust hero text font size for smaller screens */
+                margin-bottom: 30px; /* Increase margin */
+            }
+
+            /* Modify white-box-container and white-box styles */
+            .white-box-container {
+                flex-direction: column; /* Stack white boxes vertically */
+                align-items: center; /* Center boxes horizontally */
+                margin-top: 3rem; /* Increase top margin */
+            }
+
+            .white-box {
+                width: 80%; /* Adjust the width of white boxes */
+                height: auto; /* Allow height to adjust */
+                margin: 1rem 0; /* Adjust margin */
+            }
+
+            .guh {
+                font-size: 90%; /* Decrease text size */
+                margin-top: 5px; /* Adjust top margin */
+                margin-bottom: 5px; /* Adjust bottom margin */
+            }
+
+            /* Adjust the address font size in the About Us section */
+            .ingfo-box {
+                width: 90%; /* Adjust the width of the box */
+            }
+
+            .footer-container {
+                flex-direction: column; /* Stack sections vertically */
+                align-items: center; /* Center items horizontally */
+                padding: 30px 20px; /* Adjust padding */
+            }
+
+            .left-section {
+                margin-bottom: 20px; /* Add space between sections */
+                align-items: center; /* Center items horizontally */
+                text-align: center; /* Center text */
+            }
+
+            .left-section-hero {
+                margin-top: 160px !important; /* Add space between sections */
+            }
+
+            .right-section {
+                margin-left: 0; /* Remove left margin */
+                margin-top: 20px; /* Add top margin */
+                align-items: center; /* Center items horizontally */
+                text-align: center; /* Center text */
+            }
+
+            .right-section-hero {
+                margin-top: 0 !important; /* Reset margin top */
+            }
+
+            .footer-logo {
+                width: 50px; /* Adjust image size */
+                height: 50px; /* Adjust image size */
+                margin: 5px; /* Adjust margin */
+            }
+
+            h3 {
+                font-size: 1.2em; /* Adjust heading font size */
+                margin-top: 10px; /* Adjust margin */
+                margin-bottom: 5px; /* Adjust margin */
+            }
         }
 
     </style>
@@ -317,26 +388,27 @@
 
             <!-- Carousel Section -->
             <div class="container">
-            <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="true">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/lan-evo-5.png" class="d-block w-100" alt="Image 1">
+                <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="true">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/lan-evo-5.png" class="d-block w-100" alt="Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/R33.png" class="d-block w-100" alt="Image 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/eunos-cosmo.png" class="d-block w-100" alt="Image 3">
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/R33.png" class="d-block w-100" alt="Image 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/eunos-cosmo.png" class="d-block w-100" alt="Image 3">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" onclick="prevSlide()">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next" onclick="nextSlide()">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" onclick="prevSlide()">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only"></span>
-                </a>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next" onclick="nextSlide()">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only"></span>
+                    </a>
+                </div>
             </div>
 
             <hr class="gah">
@@ -353,15 +425,15 @@
 
         <div class="footer-container">
             <div class="left-section">
-                <h3>Apotek Sudi Bakti</h3>
+                <h3 class="left-section-hero">Apotek Sudi Bakti</h3>
                 <div class="footer-images">
                     <img src="images/logo-footer.png" class="footer-logo" alt="Pharmacy Logo">
                     <img src="images/instagram-footer.png" class="footer-logo" alt="Pharmacy Logo">
                 </div>
             </div>
             <div class="right-section">
-                <h3>Alamat</h3>
-                <p>Jl. Duta Mas Plaza Jl. Gatot Subroto No.21,<br>RT.007/RW.010, Sanglang Jaya, Kec, Perluk,<br>Kota Tangerang, Banten 15132</p>
+                <h3 class="right-section-hero">Alamat</h3>
+                <p class="right-section-text">Jl. Duta Mas Plaza Jl. Gatot Subroto No.21,<br>RT.007/RW.010, Sanglang Jaya, Kec, Perluk,<br>Kota Tangerang, Banten 15132</p>
             </div>
         </div>
         

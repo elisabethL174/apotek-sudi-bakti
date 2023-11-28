@@ -30,7 +30,6 @@
             <!-- Page Content -->
             <main>
                 {{ $header }}
-                {{ $guh }}
             </main>
         </div>
     </body>
