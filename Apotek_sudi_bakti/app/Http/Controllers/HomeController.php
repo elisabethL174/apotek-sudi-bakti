@@ -1,29 +1,25 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
-use illuminate\Support\Facades\Auth;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(){
-        if(Auth::id()){
-            $usertype=Auth()->user()->usertype;
+    public function index()
+    {
+        $products = Product::all(); // Fetch all products
 
-            if($usertype=='user'){
-                return view('dashboard');
-            }
+        if (Auth::id()) {
+            $usertype = Auth::user()->usertype;
 
-            else if($usertype=='admin'){
-                return view('admin.adminhome');
+            if ($usertype == 'user') {
+                return view('dashboard', ['products' => $products]); // Pass products to the dashboard view for users
+            } else if ($usertype == 'admin') {
+                return view('admin.adminhome'); // Admin view
             }
-            else{
-                return redirect()->back();
-            }
-
         }
 
+        return redirect()->back(); // Redirect if not authenticated
     }
 }

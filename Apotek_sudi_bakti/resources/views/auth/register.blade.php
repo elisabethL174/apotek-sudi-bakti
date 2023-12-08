@@ -11,6 +11,8 @@
             background-color: rgba(0, 0, 0, 0.5);
             margin-top: 50px;
             padding: 0;
+            width: 90%;
+            margin-bottom: 100px;
         }
         /* Style for form elements */
         .form-group {
@@ -157,6 +159,7 @@
         @media screen and (max-width: 768px) {
             .container {
                 flex-direction: column;
+                margin-bottom: 100px;
             }
 
             .left-side,

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
+
 {
     // Display a listing of the product
     public function index()
@@ -28,7 +29,8 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:2048', // Ensure image is nullable and follows image rules
+            'stock' => 'required|numeric',
         ]);
 
         $data = $request->all();
@@ -62,6 +64,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'image' => 'nullable|image|max:2048',
+            'stock' => 'required|numeric',
         ]);
 
         $data = $request->all();

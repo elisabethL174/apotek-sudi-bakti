@@ -11,6 +11,12 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    // Method to show the profile page
+    public function show()
+    {
+        return view('profile.profile'); // Assuming 'profile.blade.php' is in 'resources/views'
+    }
+    
     /**
      * Display the user's profile form.
      */

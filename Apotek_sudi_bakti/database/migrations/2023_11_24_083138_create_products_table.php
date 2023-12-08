@@ -1,3 +1,4 @@
+<!-- migrate.products -->
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,6 +15,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 8, 2);
             $table->string('image')->nullable();
+            $table->unsignedBigInteger('stock')->default(0);
             $table->timestamps();
         });
     }

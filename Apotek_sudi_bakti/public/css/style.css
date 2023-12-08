@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    opacity: 1;
+    overflow-y: scroll;
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.275rem;
+    color: var(--bs-emphasis-color);
+}
+
+.wrapper {
+  align-items : stretch;
+  display :flex;
+  width : 100%;
+}
+
+#sidebar {
+  max-width: 264px;
+  min-width: 264px;
+  background : var(--bs-success);
+  transisition: all 0.35s ease-in-out;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 0;
+  overflow: hidden;
+  transition: all 0.35s ease-in-out;
+  width: 100%;
+  background : var(--bs-dark-bg-subtle);
+}
+
+.sidebar-logo{
+  padding: 1.15rem;
+}
+
+.sidebard-logo a{
+  color: #e9ecef;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.sidebar-nav{
+  flex-grow: 1;
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.sidebar-header{
+  color: #e9ecef;
+  font-size: .75rem;
+  padding: 0rem 1.5rem .375rem;
+}
+
+a.sidebar-link{
+  padding: .625rem 1.625rem;
+  color: #e0ecef;
+  position: relative;
+  display: block;
+  font-size: 0.0875;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #555;
+}
+
+.navbar-expand .navbar-nav{
+  margin-left: auto;
+}
+
+.content{
+  flex: 1;
+  max-width: 100vw;
+  width: 100vw;
+}
+
+@media (min-width:768px){
+  .content{
+    max-width: auto;
+    width: auto;
+  }
+}
+
+.card{
+  box-shadow: 0 0 .875rem 0 rgba(34, 46. 60, .05 );
+  margin-bottom: 24px;
+}
+
+.illustration{
+  background-color: var(--bs-primary-bg-subtle);
+  color: var(--bs-emphasis-color);
+}
+
+.illustration-img{
+  max-width: 150px;
+  width: 100%;
+}
+
+
+#sidebar {
+  margin-left: 0; /* Atur nilai awal */
+  transition: margin-left 0.2s ease-in-out; /* Terapkan transisi hanya pada margin-left */
+}
+
+#sidebar.collapsed {
+  margin-left: -264px; /* Atur nilai yang berbeda */
+}
+
+.custom-button {
+        padding: 5px 5px; /* Atur padding */
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-bottom: 0px;
+    }
+
+.form-group {
+        margin-bottom: 20px; /* Jarak antara kolom */
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .form-label {
+        font-size: 16px; /* Ukuran teks label */
+    }
+
+    .form-input {
+        width: 100%; /* Lebar kolom input */
+    }
+
+    .custom-button {
+      padding: 5px 5px; /* Atur padding */
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-bottom: 0px;
+  }
+
+  .custom-button2 {
+    padding: 5px 5px; /* Atur padding */
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+  position: relative;
+  margin-right: 20px; /* Atur margin kanan sesuai kebutuhan */
+}
+
+#searchInput {
+  width: 200px; /* Atur lebar sesuai kebutuhan */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 10px;
+}
