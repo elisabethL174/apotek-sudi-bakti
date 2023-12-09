@@ -62,4 +62,48 @@ class CartController extends Controller
         return back()->with('success', 'Checkout successful!');
     }
 
+    public function updateQuantity(Request $request, $productId)
+    {
+        // Validate the request
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $user = auth()->user();
+
+        // Find the cart item for the given product and user
+        $cartItem = CartItem::where('user_id', $user->id)
+            ->where('product_id', $productId)
+            ->first();
+
+        if (!$cartItem) {
+            return response()->json(['error' => 'Cart item not found'], 404);
+        }
+
+        // Update the quantity
+        $cartItem->quantity = $request->input('quantity');
+        $cartItem->save();
+
+        return response()->json(['success' => 'Quantity updated successfully']);
+    }
+
+    public function removeProduct($productId)
+{
+    $user = auth()->user();
+
+    // Find the cart item for the given product and user
+    $cartItem = CartItem::where('user_id', $user->id)
+        ->where('product_id', $productId)
+        ->first();
+
+    if (!$cartItem) {
+        return response()->json(['error' => 'Product not found in the cart'], 404);
+    }
+
+    // Delete the cart item
+    $cartItem->delete();
+
+    // Provide a success response
+    return response()->json(['success' => 'Product removed from the cart']);
+}
 }

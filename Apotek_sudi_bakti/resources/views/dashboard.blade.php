@@ -365,44 +365,44 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-            <a class="navbar-brand" href="/">
-                <div class="navbar-brand-clickable">
-                    <img src="images/logo.png" class ="navbar-logo" alt="Product 1">
-                    <h1 class="navbar-brand-text">APOTEK SUDI BAKTI</h1>
-                </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-link" href="#">Market Place</a>
-                    </li>
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                Logout
-                            </x-dropdown-link>
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <a class="navbar-link" href="/register">Notification</a>
-                    </li>
-                </ul>
+        <a class="navbar-brand" href="{{ route('dashboard') }}">
+            <div class="navbar-brand-clickable">
+                <img src="images/logo.png" class ="navbar-logo" alt="Product 1">
+                <h1 class="navbar-brand-text">APOTEK SUDI BAKTI</h1>
             </div>
-        </nav>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-link" href="{{ route('marketplace.index') }}">Market Place</a>
+                </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            Logout
+                        </x-dropdown-link>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-link" href="/register">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
         <div class="huh">
             <div class="hoh">
                 <!-- Hero Section -->
                 <div id="home" class="text-center mb-6 hero-section">
                     <h1 class="hero-text">Kini apotek Sudi Bakti telah<br>menyediakan platform pembelanjaan produk-produk kesehatan<br>melalui website terbaru kami</h1>
-                    <a class="text-lg text-gray-600 small-hero-text" href="#">Access Our Product</a>
+                    <a class="text-lg text-gray-600 small-hero-text" href="{{ route('marketplace.index') }}">Access Our Product</a>
                 </div>
 
                 <hr class="gah">
@@ -445,8 +445,6 @@
                 <hr class="gah">
 
                 <div class="container-product">
-                <a href="{{ route('cart.myCart') }}" class="btn btn-primary mb-3">View Cart</a>
-                <a href="{{ route('orders.myOrders') }}" class="btn btn-primary mb-3">View My Orders</a>
                     <div class="container mt-5">
                         <div class="row">
                             @if(isset($products))
@@ -469,21 +467,16 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="productModalLabel">{{ $product->name }}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Description: {{ $product->description }}</p>
                                                     <p>Price: {{ $product->price }}</p>
-                                                    <p>Stock: {{ $product->stock }}</p>                                   
+                                                    <p>Stock: {{ $product->stock }}</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" id="botan" data-dismiss="modal">Close</button>
-                                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary" id="botan">Add to Cart</button>
-                                                </form>                                </div>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -57,7 +57,7 @@
                         <div>{{ Auth::user()->name }} <i class='bx bx-chevron-down' ></i> </div> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a href="{{ route('profile.show') }}" class="dropdown-item">{{ __('Profile') }}</a>
+                        <a href="{{ route('profile.edit') }}" class="dropdown-item">{{ __('Profile') }}</a>
                         <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -83,7 +83,7 @@
                                 <div class="row g-0 w-100">
                                     <div class="col-6">
                                         <div class="p-3 m-1">
-                                            <h4>Welcome Back, Admin</h4>
+                                            <h4>Welcome Back, {{ Auth::user()->name }}</h4>
                                             <p class="mb-0">Admin Dashboard </p>
                                         </div>
                                     </div>

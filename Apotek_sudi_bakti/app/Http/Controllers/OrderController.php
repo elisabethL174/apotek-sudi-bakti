@@ -40,4 +40,19 @@ class OrderController extends Controller
      
         return view('myOrders', compact('orders'));
     }
+
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+
+        // Additional logic for order cancellation (if needed)
+
+        $order->delete();
+
+        return response()->json(['success' => true, 'message' => 'Order canceled successfully']);
+
+    }
+    
 }
+
+
