@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController; // Import ProductController
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\UserProfileController;
 
 use App\Models\Product;
 
@@ -33,6 +34,7 @@ Route::middleware(['auth', 'admin'])->group(function () { // Move 'admin' middle
 
     // tomake admin status order change
     Route::get('/admin/orders', [OrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/admin/history', [OrderController::class, 'historyTransaction'])->name('admin.history');
     Route::patch('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
     
     
@@ -52,6 +54,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
+Route::get('/profile-user', [UserProfileController::class, 'edit'])->name('user.edit');
+Route::patch('/profile-user', [UserProfileController::class, 'update'])->name('user.update');
+Route::delete('/profile-user', [UserProfileController::class, 'destroy'])->name('user.destroy');
 
 require __DIR__.'/auth.php';

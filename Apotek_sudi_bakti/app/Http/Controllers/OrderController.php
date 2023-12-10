@@ -52,6 +52,10 @@ class OrderController extends Controller
         return response()->json(['success' => true, 'message' => 'Order canceled successfully']);
 
     }
+    public function historyTransaction(){
+        $historyTransaction =$orders = Order::Where('status','complete')->get();
+        return view('admin.history.index', compact('historyTransaction'));
+    }
     
 }
 

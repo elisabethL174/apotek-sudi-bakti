@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="{{route('admin.orders.index')}}" class="sidebar-link">
                             <i class='bx bx-file-blank'></i>
                             Orders
                         </a>
@@ -75,7 +75,7 @@
             </nav>
             <main class="content px-3 py-2">
                 <div class="mb-3">
-                    <h4>Orders</h4>
+                    <h4>History Transaction</h4>
                 </div>
     <div class="search-container">
         <input type="search" id="searchInput" placeholder="Search..." oninput="searchOrders()">
@@ -83,7 +83,7 @@
                 <div class="card border-0">
                     <div class="card-header">
                         <h7 class="card-title font-weight-bold custom-green-text">
-                            Orders
+                            History Transaction
                         </h7>
                     </div>
                     <div class="card-body shadow p-2">
@@ -98,17 +98,16 @@
                                         <th>Products</th>
                                         <th>Total Price</th>
                                         <th>Status</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {{-- Table rows --}}
-                                    @foreach ($orders as $index => $order)
+                                    @foreach ($historyTransaction as $index => $order)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $order->id}}</td>
-                                            <td>{{ $order->user->name }}</td>
-                                            <td>{{ $order->user->email}} </td>
+                                            <td>{{ $order->id}} </td>
+                                            <td>{{ $order->user->name}}</td>
+                                            <td>{{ $order->user->email}}</td>
                                             <td>
                                                     @foreach ($order->orderItems as $item)
                                                         <li>{{ $item->product->name }} ({{ $item->quantity }})</li>
@@ -116,18 +115,6 @@
                                             </td>
                                             <td>{{ $order->orderItems->sum(function($item) { return $item->quantity * $item->product->price; }) }}</td>
                                             <td>{{ $order->status }}</td>
-                                            <td>
-                                                <form action="{{ route('orders.update', $order->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <select name="status" class="form-select">
-                                                        <option value="accepted" {{ $order->status == 'accepted' ? 'selected' : '' }}>Accepted</option>
-                                                        <option value="complete" {{ $order->status == 'complete' ? 'selected' : '' }}>Complete</option>
-                                                        <option value="cancel" {{ $order->status == 'cancel' ? 'selected' : '' }}>Cancel</option>
-                                                    </select>
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </form>
-                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -13,8 +13,8 @@ return new class extends Migration
     {
          Schema::create('history_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->Integer('user_id')->index()->nullable();
+            $table->Integer('order_id')->index()->nullable();
             $table->decimal('total_price', 8, 2);
             $table->string('status')->default('completed');
             $table->timestamps();

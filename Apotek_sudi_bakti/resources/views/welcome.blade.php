@@ -13,17 +13,18 @@
         }
 
         .navbar-logo {
-            width: 45px;
-            height: 45px;
-            margin-left: 25px;
-            margin-right: 10px;
+            width: 20%;
+            height: 20%;
             margin-top: 0vh;
+            margin-left: 15px;
         }
 
         .navbar-brand-text {
             font-size: 16px;
             margin-top: 12px;
             color: black;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
         }
 
         .navbar-link {
@@ -34,6 +35,7 @@
             white-space: nowrap; /* Prevents text wrapping */
             margin-left: 10px;
             margin-right: 10px;
+            font-family: 'Trebuchet MS', sans-serif;
         }
 
         .collapse {
@@ -318,9 +320,8 @@
         }
 
         .footer-logo-hero {
-            width: 90px;
-            height: 90px;
-            margin-left: 25px;
+            width: 80%;
+            height: 80%;
             margin-right: 10px;
             margin-top: 20px;
         }
@@ -359,18 +360,64 @@
             margin-right: 15px;
         }
 
+        .container-fluid {
+            padding: 0; /* Remove default container padding */
+        }
+
+        #carouselExample {
+            width: 100%;
+            margin: 0;
+        }
+
+        .carousel-inner {
+            width: 100%;
+        }
+
+        .carousel-item {
+            width: 100%;
+        }
+
+        .carousel-item img {
+            width: 100%; /* Force the images to span the carousel item width */
+            object-fit: cover; /* Maintain aspect ratio and cover entire space */
+        }
+
+        #home {
+            padding: 0px;
+        }
+
+        /* Additional styles for the page indicator bar */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .carousel-indicators li {
+            width: 25px; /* Adjust width of the indicator bar */
+            height: 4px; /* Adjust height of the indicator bar */
+            background-color: #aaa; /* Default color for inactive indicators */
+            margin: 0 5px; /* Adjust spacing between indicators */
+            cursor: pointer;
+            border-radius: 2px; /* Round the corners */
+            transition: background-color 0.3s ease; /* Add easing transition */
+        }
+
+        .carousel-indicators .active {
+            background-color: #000; /* Color for active indicator */
+        }
+
     </style>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-            <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/">
                 <div class="navbar-brand-clickable">
-                    <img src="images/logo.png" class ="navbar-logo" alt="Product 1">
-                    <h1 class="navbar-brand-text">APOTEK SUDI BAKTI</h1>
+                    <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
                 </div>
-            </a>
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -380,7 +427,7 @@
                         <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navbar-link" href="#">Market Place</a>
+                        <a class="navbar-link" href="#produk">Market Place</a>
                     </li>
                     <li class="nav-item">
                         <a class="navbar-link" href="/login">Login</a>
@@ -396,8 +443,26 @@
             <div class="hoh">
                 <!-- Hero Section -->
                 <div id="home" class="text-center mb-6 hero-section">
-                    <h1 class="hero-text">Kini apotek Sudi Bakti telah<br>menyediakan platform pembelanjaan produk-produk kesehatan<br>melalui website terbaru kami</h1>
-                    <a class="text-lg text-gray-600 small-hero-text" href="#">Access Our Product</a>
+                    <div class="container-fluid px-0">
+                        <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="true">
+                        <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="images/apotik1.jpg" class="d-block w-100" alt="Image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="images/apotik2.jpg" class="d-block w-100" alt="Image 2">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" onclick="prevSlide()">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next" onclick="nextSlide()">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only"></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <hr class="gah">
@@ -439,14 +504,14 @@
 
                 <hr class="gah">
 
-                <div class="container-product">
+                <div class="container-product" id="produk">
                     <div class="container mt-5">
                         <div class="row">
                             @if(isset($products))
-                                @foreach($products as $product)
+                                @foreach($products->take(8) as $product)
                                     <div class="col-md-4 mb-3">
                                         <div class="card">
-                                            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                                            <img src="{{ asset('storage/products'.$product->image) }}" alt="{{ $product->name }}" class="card-img-top" style="height: 200px; object-fit: cover;">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $product->name }}</h5>
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }}">
@@ -485,33 +550,6 @@
 
                 <hr class="gah">
 
-                <!-- Carousel Section -->
-                <div class="container">
-                    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="true">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/lan-evo-5.png" class="d-block w-100" alt="Image 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/R33.png" class="d-block w-100" alt="Image 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/eunos-cosmo.png" class="d-block w-100" alt="Image 3">
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev" onclick="prevSlide()">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next" onclick="nextSlide()">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <hr class="gah">
-
                 <!-- About Us Section -->
                 <div id="ingfokan" class="text-center ingfo-kami">
                     <h2 class="text-2xl font-semibold mb-4">Tentang Kami</h2>
@@ -525,8 +563,7 @@
             <div class="footer-container">
                 <div class="left-section">
                     <div class="footer-brand">
-                        <img src="images/logo.png" class ="footer-logo-hero" alt="Product 1">
-                        <h1 class="footer-brand-text">APOTEK SUDI BAKTI</h1>
+                        <img src="LOGO SUDI BAKTI PUTIH.png" class ="footer-logo-hero" alt="Product 1">
                     </div>
                     <div class="footer-details">
                         <p><span class="footer-details-bold">Apoteker :</span> <span class="footer-details-text">apt. Indah Pertiwi S.Farm</span></p>

@@ -29,17 +29,21 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|max:2048', // Ensure image is nullable and follows image rules
+            'image' => 'nullable|image|max:2048',
             'stock' => 'required|numeric',
+
         ]);
 
-        $data = $request->all();
-
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('products', 'public');
-        }
-
-        Product::create($data);
+        $gambar = $request -> file('image')->store('products');
+        Product::create(
+            [
+                'name' => $request -> name,
+                'description' => $request -> description,
+                'price' => $request -> price,
+                'image' => str_replace('products','', $gambar),
+                'stock' => $request -> stock,
+            ]
+        );        
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
@@ -67,15 +71,16 @@ class ProductController extends Controller
             'stock' => 'required|numeric',
         ]);
 
-        $data = $request->all();
 
-        if ($request->hasFile('image')) {
-            // Delete old image
-            if ($product->image) {
-                Storage::delete($product->image);
-            }
-            $data['image'] = $request->file('image')->store('products', 'public');
-        }
+        $data = $request->all();
+        
+        if (!empty($request -> file("image"))){
+            $oldGambar = ('storage/products/'.$product -> image);
+            if(file_exists($oldGambar))@unlink($oldGambar);
+            $data["image"] = $request -> file('image')->store('products');
+            $data["image"] = str_replace('products','',$data["image"]);
+       }
+    
 
         $product->update($data);
 

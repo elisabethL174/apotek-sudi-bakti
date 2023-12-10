@@ -12,6 +12,40 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <style>
+        .navbar-brand-clickable {
+            display: flex;
+        }
+
+        .navbar-logo {
+            width: 20%;
+            height: 20%;
+            margin-top: 0vh;
+            margin-left: 15px;
+        }
+
+        .navbar-brand-text {
+            font-size: 16px;
+            margin-top: 12px;
+            color: black;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .navbar-link {
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            color: black !important;
+            white-space: nowrap; /* Prevents text wrapping */
+            margin-left: 10px;
+            margin-right: 10px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        .collapse {
+            margin-right: 4.5%;
+            justify-content: flex-end;
+        }
         .main {
             padding: 20px;
         }
@@ -127,6 +161,37 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <div class="navbar-brand-clickable">
+                <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-link" href="{{ route('marketplace.index') }}">Market Place</a>
+                </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            Logout
+                        </x-dropdown-link>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-link" href="{{ route('user.edit') }}">Profile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="main">
         <main class="content px-3 py-2">
             <div class="mb-3">

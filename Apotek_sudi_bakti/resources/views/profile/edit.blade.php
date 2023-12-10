@@ -8,12 +8,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
 
         .container {
             width: 60%;
@@ -26,7 +20,6 @@
 
         h1 {
             text-align: center;
-            margin-bottom: 30px;
         }
 
         label {
@@ -38,15 +31,16 @@
         input[type="password"] {
             width: 100%;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        button {
-            padding: 10px 20px;
+        button.btn-primary {
+            padding: 7px 10px;
             border: none;
             border-radius: 5px;
+            margin-left: 20px;
             color: #fff;
             background-color: #007bff;
             cursor: pointer;
@@ -54,6 +48,10 @@
 
         button.btn-danger {
             background-color: #dc3545;
+            margin-left: 20px;
+            padding: 7px 10px;
+            margin-bottom: 20px;
+
         }
 
     </style>
@@ -85,7 +83,13 @@
                         <i class='bx bx-file-blank' ></i>
                             Orders
                         </a>
-                    </li>     
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{route('admin.history')}}" class="sidebar-link">
+                            <i class='bx bx-file-blank'></i>
+                            History
+                        </a>
+                    </li>
                     </ul>
                     </li>
                 </ul>
@@ -118,8 +122,11 @@
                 </ul>
             </div>
         </nav>
-    <div class="container">
-        <h1>Profil Akun Anda</h1>
+    <div class="content px-3 py-2">
+    <div class="card border-0">
+    <div class="mb-3">
+    <h1 class="p-4">Profil Akun Anda</h1>
+                </div>
         <form method="POST" action="{{ route('profile.update') }}">
             @csrf
             @method('PATCH')

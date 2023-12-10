@@ -16,7 +16,7 @@
             <div class="h-100">
             <div class="sidebar-logo">
                     <a href="{{ route('home') }}" class="d-flex align-items-center pb-4 border-bottom border-dark">
-                        <img src="LOGO SUDI BAKTI PUTIH.png" alt="" class="rounded img-fluid">
+                        <img src="/LOGO SUDI BAKTI PUTIH.png" alt="" class="rounded img-fluid">
                     </a>
                 </div>
                 <ul class="sidebar-nav">
@@ -36,6 +36,12 @@
                         <a href="#" class="sidebar-link">
                             <i class='bx bx-file-blank'></i>
                             Orders
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{route('admin.history')}}" class="sidebar-link">
+                            <i class='bx bx-file-blank'></i>
+                            History
                         </a>
                     </li>
                 </ul>
@@ -100,7 +106,7 @@
             <label for="image">Image:</label>
             <input type="file" class="form-control" id="image" name="image">
             @if($product->image)
-            <img src="{{ asset('storage/'.$product->image) }}" width="100px">
+            <img src="{{ asset('storage/products'.$product->image) }}" width="100px">
             @endif
         </div>
         <button type="submit" class="btn btn-primary btn-sm custom-button2">Update</button>

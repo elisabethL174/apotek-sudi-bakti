@@ -16,7 +16,7 @@
             <div class="h-100">
                 <div class="sidebar-logo">
                     <a href="{{ route('home') }}" class="d-flex align-items-center pb-4 border-bottom border-dark">
-                        <img src="LOGO SUDI BAKTI PUTIH.png" alt="" class="rounded img-fluid">
+                        <img src="/LOGO SUDI BAKTI PUTIH.png" alt="" class="rounded img-fluid">
                     </a>
                 </div>
                 <ul class="sidebar-nav">
@@ -36,6 +36,12 @@
                         <a href="{{ route('admin.orders.index') }}" class="sidebar-link">
                             <i class='bx bx-file-blank'></i>
                             Orders
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{route('admin.history')}}" class="sidebar-link">
+                            <i class='bx bx-file-blank'></i>
+                            History
                         </a>
                     </li>
                 </ul>
@@ -98,7 +104,7 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
-                            <td><img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" width="100px"></td>
+                            <td><img src="{{ asset('storage/products' . $product->image) }}" alt="Product Image" width="100px"></td>
                             <td>
                                 <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit</a>
                                 <form id="deleteForm{{ $product->id }}"

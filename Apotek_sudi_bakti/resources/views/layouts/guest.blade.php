@@ -13,11 +13,10 @@
             }
 
             .navbar-logo {
-                width: 45px;
-                height: 45px;
-                margin-left: 25px;
-                margin-right: 10px;
+                width: 20%;
+                height: 20%;
                 margin-top: 0vh;
+                margin-left: 15px;
             }
 
             .navbar-brand-text {
@@ -34,6 +33,7 @@
                 white-space: nowrap; /* Prevents text wrapping */
                 margin-left: 10px;
                 margin-right: 10px;
+                font-family: 'Trebuchet MS', sans-serif;
             }
 
             .collapse {
@@ -62,33 +62,32 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="yuh">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-                <a class="navbar-brand" href="/">
-                    <div class="navbar-brand-clickable">
-                        <img src="images/logo.png" class ="navbar-logo" alt="Product 1">
-                        <h1 class="navbar-brand-text">APOTEK SUDI BAKTI</h1>
-                    </div>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-link" href="#">Market Place</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-link" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-link" href="/register">Registrasi</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+        <a class="navbar-brand" href="/">
+            <div class="navbar-brand-clickable">
+                <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+            </div>
+        </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="navbar-link" href="/#ingfokan">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-link" href="/login">Market Place</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-link" href="/register">Registrasi</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
             <div class="googoogaagaa">
                 {{ $slot }}

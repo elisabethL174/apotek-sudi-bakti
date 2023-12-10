@@ -39,6 +39,12 @@
                             Orders
                         </a>
                     </li>     
+                    <li class="sidebar-item">
+                        <a href="{{route('admin.history')}}" class="sidebar-link">
+                            <i class='bx bx-file-blank'></i>
+                            History
+                        </a>
+                    </li>
                     </ul>
                     </li>
                 </ul>
