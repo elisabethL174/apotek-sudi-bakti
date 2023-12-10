@@ -8,13 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         
-        .navbar-brand-clickable {
+        .navbar-brand-guh {
             display: flex;
         }
 
         .navbar-logo {
-            width: 20%;
-            height: 20%;
+            width: 17vw;
+            height: 5vw;
             margin-top: 0vh;
             margin-left: 15px;
         }
@@ -28,7 +28,7 @@
         }
 
         .navbar-link {
-            font-size: 16px;
+            font-size: 1.5em;
             text-decoration: none;
             font-weight: bold;
             color: black !important;
@@ -313,6 +313,11 @@
             h3.footer-details-bold {
                 margin-top: 0px;
             }
+
+            .footer-details {
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         .map-container {
@@ -355,7 +360,6 @@
 
         .footer-details-text {
             color: white;
-            white-space: nowrap; /* Prevents text wrapping */
             font-size: 1.2em;
             margin-right: 15px;
         }
@@ -407,17 +411,18 @@
             background-color: #000; /* Color for active indicator */
         }
 
+
     </style>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-        <a class="navbar-brand" href="/">
-                <div class="navbar-brand-clickable">
+    <div class="navbar-brand-clickable">
+                <a class="navbar-brand" href="/">
                     <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
-                </div>
-        </a>
+                </a>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -427,7 +432,7 @@
                         <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navbar-link" href="#produk">Market Place</a>
+                        <a class="navbar-link" href="/login">Market Place</a>
                     </li>
                     <li class="nav-item">
                         <a class="navbar-link" href="/login">Login</a>
@@ -506,6 +511,7 @@
 
                 <div class="container-product" id="produk">
                     <div class="container mt-5">
+                        <h2 class="text-2xl text-center font-semibold mb-4">Our Product</h2>
                         <div class="row">
                             @if(isset($products))
                                 @foreach($products->take(8) as $product)

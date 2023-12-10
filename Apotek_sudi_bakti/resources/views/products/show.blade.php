@@ -5,7 +5,7 @@
 <div class="container">
     <h1>{{ $product->name }}</h1>
     <p>{{ $product->description }}</p>
-    <p>{{ $product->price }}</p>
+    <p>Rp. {{ $product->price }}</p>
     @if($product->image)
     <img src="{{ asset('storage/'.$product->image) }}" width="200px">
     @endif

@@ -8,16 +8,13 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <style>
-            .navbar-brand-clickable {
-                display: flex;
-            }
 
-            .navbar-logo {
-                width: 20%;
-                height: 20%;
-                margin-top: 0vh;
-                margin-left: 15px;
-            }
+.navbar-logo {
+            width: 17vw;
+            height: 5vw;
+            margin-top: 0vh;
+            margin-left: 15px;
+        }
 
             .navbar-brand-text {
                 font-size: 16px;
@@ -51,7 +48,7 @@
             }
 
             .googoogaagaa {
-                padding: 75px;
+                padding: 1vw;;
                 padding-bottom: 0px;
             }
 
@@ -63,11 +60,11 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="yuh">
         <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-        <a class="navbar-brand" href="/">
-            <div class="navbar-brand-clickable">
-                <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+        <div class="navbar-brand-clickable">
+                <a class="navbar-brand" href="/">
+                    <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+                </a>
             </div>
-        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

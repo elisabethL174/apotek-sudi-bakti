@@ -17,8 +17,8 @@
         }
 
         .navbar-logo {
-            width: 20%;
-            height: 20%;
+            width: 17vw;
+            height: 5vw;
             margin-top: 0vh;
             margin-left: 15px;
         }
@@ -32,7 +32,7 @@
         }
 
         .navbar-link {
-            font-size: 16px;
+            font-size: 1.5em;
             text-decoration: none;
             font-weight: bold;
             color: black !important;
@@ -223,7 +223,7 @@
                                         <tr>
                                             <td>{{ $item->product->name }}</td>
                                             <td id="orderQuantity{{ $item->product->id }}">{{ $item->quantity }}</td>
-                                            <td>${{ $item->price }}</td>
+                                            <td>Rp. {{ $item->price }}</td>
                                         </tr>
                                         <script>
                                             updateQuantityFromCart({{ $item->product->id }});
@@ -233,7 +233,7 @@
                                     </table>
                                 </div>
                                 <p class="font-weight-bold text-end">
-                                    Total Price: ${{ $order->total_amount }}
+                                    Total Price: Rp. {{ $order->total_amount }}
                                     @if($order->status === 'pending')
                                         <button class="cancel-btn" onclick="cancelOrder({{ $order->id }})">Cancel Order</button>
                                     @endif

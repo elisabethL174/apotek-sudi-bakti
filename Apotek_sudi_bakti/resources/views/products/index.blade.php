@@ -88,38 +88,41 @@
             <div class="text-start mb-3">
                     <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm custom-button">Tambah Barang</a>
                 </div>
-            <div class="cardbody shadow p-2"><table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nama Obat</th>
-                            <th>Price</th>
-                            <th>Deskripsi</th>
-                            <th>Image</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($products as $product)
-                        <tr>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->description }}</td>
-                            <td><img src="{{ asset('storage/products' . $product->image) }}" alt="Product Image" width="100px"></td>
-                            <td>
-                                <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit</a>
-                                <form id="deleteForm{{ $product->id }}"
-                                    action="{{ route('products.destroy', $product) }}" method="POST"
-                                    style="display:inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn btn-danger"
-                                        onclick="confirmDelete({{ $product->id }})">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table></div>
+            <div class="cardbody shadow p-2">
+                <div class="table-responsive">    
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nama Obat</th>
+                                <th>Price</th>
+                                <th>Deskripsi</th>
+                                <th>Image</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($products as $product)
+                            <tr>
+                                <td>{{ $product->name }}</td>
+                                <td>Rp. {{ $product->price }}</td>
+                                <td>{{ $product->description }}</td>
+                                <td><img src="{{ asset('storage/products' . $product->image) }}" alt="Product Image" width="100px"></td>
+                                <td>
+                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit</a>
+                                    <form id="deleteForm{{ $product->id }}"
+                                        action="{{ route('products.destroy', $product) }}" method="POST"
+                                        style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="confirmDelete({{ $product->id }})">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
             </main>
         </div>

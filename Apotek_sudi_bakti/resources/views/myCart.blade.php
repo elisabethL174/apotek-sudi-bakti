@@ -13,13 +13,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
 
-.navbar-brand-clickable {
-            display: flex;
-        }
-
-        .navbar-logo {
-            width: 20%;
-            height: 20%;
+.navbar-logo {
+            width: 17vw;
+            height: 5vw;
             margin-top: 0vh;
             margin-left: 15px;
         }
@@ -33,7 +29,7 @@
         }
 
         .navbar-link {
-            font-size: 16px;
+            font-size: 1.5em;
             text-decoration: none;
             font-weight: bold;
             color: black !important;
@@ -47,7 +43,7 @@
             margin-right: 4.5%;
             justify-content: flex-end;
         }
-        
+
         .card {
             opacity: 0;
             transition: opacity 1.5s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -239,18 +235,18 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-        <a class="navbar-brand" href="{{ route('home') }}">
             <div class="navbar-brand-clickable">
-                <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+                </a>
             </div>
-        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
+                    <a class="navbar-link" href="/#ingfokan">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
                     <a class="navbar-link" href="{{ route('marketplace.index') }}">Market Place</a>
@@ -314,28 +310,30 @@
                                     </td>
                                     <td class="subtotal-column">
                                         <span class="subtotal" id="subtotal{{ $item->product->id }}">
-                                            ${{ $item->product->price }}
+                                            Rp. {{ $item->product->price }}
                                         </span>
                                     </td>
                                     <td class="remove-column">
-    <button type="button" class="btn btn-danger" onclick="removeProduct('{{ $item->product->id }}')">
-    <i class='bx bxs-trash' style='color:#ffffff'  ></i>
-    </button>
-</td>
+                                        <button type="button" class="btn btn-danger" onclick="removeProduct('{{ $item->product->id }}')">
+                                        <i class='bx bxs-trash' style='color:#ffffff'  ></i>
+                                        </button>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="text-end mt-4 total-price" id="totalPrice">Total Price: ${{ $cartItems->sum(function($item) { return $item->product->price; }) }}</div>
+                    <div class="text-end mt-4 total-price" id="totalPrice">Total Price: Rp. {{ $cartItems->sum(function($item) { return $item->product->price; }) }}</div>
 
-                    <form action="{{ route('cart.checkout') }}" method="POST"
-                        class="d-flex justify-content-end mt-3">
-                        @csrf
-                        <button type="submit" class="btn btn-success checkout-btn"
-                            {{ $cartItems->isEmpty() ? 'disabled' : '' }}>Checkout</button>
-                    </form>
+                    <form action="{{ route('cart.checkout') }}" method="POST" class="d-flex justify-content-end mt-3">
+    @csrf
+    <button id="checkoutBtn" type="submit" class="btn btn-success checkout-btn"
+        {{ $cartItems->isEmpty() ? 'disabled' : '' }}>Checkout</button>
+</form>
+
+
+
                 </div>
                 @endif
             </div>
@@ -427,6 +425,30 @@
     }
 </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+    document.getElementById('checkoutBtn').addEventListener('click', function(event) {
+        if (this.hasAttribute('disabled')) {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Your Cart is Empty',
+                text: 'Add items to your cart before checking out.',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Task Created Successfully!',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+    });
+</script>
+
+        @include('sweetalert::alert')
+
     </body>
 
     </html>

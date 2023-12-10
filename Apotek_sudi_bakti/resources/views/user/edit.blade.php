@@ -65,13 +65,9 @@
             margin-bottom: 25px;
         }
 
-        .navbar-brand-clickable {
-            display: flex;
-        }
-
         .navbar-logo {
-            width: 20%;
-            height: 20%;
+            width: 17vw;
+            height: 5vw;
             margin-top: 0vh;
             margin-left: 15px;
         }
@@ -85,7 +81,7 @@
         }
 
         .navbar-link {
-            font-size: 16px;
+            font-size: 1.5em;
             text-decoration: none;
             font-weight: bold;
             color: black !important;
@@ -112,11 +108,11 @@
 <div class="wrapper">
     <div class="main">
     <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-    <a class="navbar-brand" href="{{ route('home') }}">
-            <div class="navbar-brand-clickable">
-                <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+    <div class="navbar-brand-clickable">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+                </a>
             </div>
-        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

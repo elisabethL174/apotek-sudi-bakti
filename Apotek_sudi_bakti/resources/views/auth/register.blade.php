@@ -77,7 +77,7 @@
         .left-side {
             flex: 1;
             justify-content: center;
-            padding: 20px;
+            padding: 1vw;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -89,7 +89,7 @@
         .right-side {
             flex: 1;
             justify-content: center;
-            padding: 20px;
+            padding: 1vw;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -167,7 +167,7 @@
                 width: 100%;
                 border: none;
                 border-bottom: 1px solid white;
-                padding: 20px 0;
+                padding: 0 3vw;
                 text-align: center;
             }
 
@@ -179,6 +179,7 @@
             .right-side {
                 border-top: 1px solid white;
                 border-bottom: none;
+                padding: 7vw;
             }
 
             .form-group input {
