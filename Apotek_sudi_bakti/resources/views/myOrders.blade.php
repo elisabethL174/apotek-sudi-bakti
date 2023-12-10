@@ -12,40 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <style>
-        .navbar-brand-clickable {
-            display: flex;
-        }
-
-        .navbar-logo {
-            width: 17vw;
-            height: 5vw;
-            margin-top: 0vh;
-            margin-left: 15px;
-        }
-
-        .navbar-brand-text {
-            font-size: 16px;
-            margin-top: 12px;
-            color: black;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-        }
-
-        .navbar-link {
-            font-size: 1.5em;
-            text-decoration: none;
-            font-weight: bold;
-            color: black !important;
-            white-space: nowrap; /* Prevents text wrapping */
-            margin-left: 10px;
-            margin-right: 10px;
-            font-family: 'Trebuchet MS', sans-serif;
-        }
-
-        .collapse {
-            margin-right: 4.5%;
-            justify-content: flex-end;
-        }
         .main {
             padding: 20px;
         }
@@ -157,23 +123,66 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+        .navbar-logo {
+            width: 17vw;
+            height: 5vw;
+            margin-top: 0vh;
+            margin-left: 15px;
+        }
+
+        .navbar-brand-text {
+            font-size: 16px;
+            margin-top: 12px;
+            color: black;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .navbar-link {
+            font-size: 1.5em;
+            text-decoration: none;
+            font-weight: bold;
+            color: black !important;
+            white-space: nowrap; /* Prevents text wrapping */
+            margin-left: 10px;
+            margin-right: 10px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        .collapse {
+            margin-right: 4.5%;
+            justify-content: flex-end;
+        }
+
+        span.navbar-toggler-icon {
+            border-radius: 3px;
+            filter: invert(100%); /* Invert the color to turn it white (or your desired color) */
+        }
+
+        .content {
+            padding: 10px; /* Adjust padding as needed */
+            max-width: 100%;
+            overflow-x: auto; /* Enable horizontal scroll */
+        }
+
     </style>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-        <a class="navbar-brand" href="{{ route('home') }}">
             <div class="navbar-brand-clickable">
-                <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="LOGO SUDI BAKTI HITAM.png" class ="navbar-logo" alt="Product 1">
+                </a>
             </div>
-        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="navbar-link" href="#ingfokan">Tentang Kami</a>
+                    <a class="navbar-link" href="/#ingfokan">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
                     <a class="navbar-link" href="{{ route('marketplace.index') }}">Market Place</a>
@@ -329,5 +338,6 @@
         }
     }
 </script>
+@include('sweetalert::alert')
 
 </html>

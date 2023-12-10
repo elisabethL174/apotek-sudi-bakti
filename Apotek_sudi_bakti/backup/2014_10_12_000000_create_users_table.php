@@ -1,3 +1,4 @@
+<!-- migrate.User -->
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,12 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('history_transactions', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->Integer('user_id')->index()->nullable();
-            $table->Integer('order_id')->index()->nullable();
-            $table->integer('total_price');
-            $table->string('status')->default('completed');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('usertype')->default('user');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('history_transactions');
+        Schema::dropIfExists('users');
     }
 };

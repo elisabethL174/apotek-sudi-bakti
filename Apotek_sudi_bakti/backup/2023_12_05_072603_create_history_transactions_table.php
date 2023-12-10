@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->Integer('user_id')->index()->nullable();
             $table->Integer('order_id')->index()->nullable();
-            $table->integer('total_price');
+            $table->decimal('total_price', 8, 2);
             $table->string('status')->default('completed');
             $table->timestamps();
         });

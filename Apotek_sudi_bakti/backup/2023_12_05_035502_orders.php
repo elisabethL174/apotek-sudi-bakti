@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('history_transactions', function(BluePrint $table){
-            $table -> unsignedBigInteger('user_id')->index()->nullable()->change();
-            $table -> unsignedBigInteger('order_id')->index()->nullable()->change();
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
+            $table->Integer('order_id')->index()->nullable();
+            $table->Integer('product_id')->index()->nullable();
+            $table->integer('quantity');
+            $table->decimal('price', 8, 2);
+            $table->timestamps();
         });
+
+
     }
 
     /**

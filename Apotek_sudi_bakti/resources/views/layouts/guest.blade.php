@@ -23,15 +23,15 @@
             }
 
             .navbar-link {
-                font-size: 16px;
-                text-decoration: none;
-                font-weight: bold;
-                color: black !important;
-                white-space: nowrap; /* Prevents text wrapping */
-                margin-left: 10px;
-                margin-right: 10px;
-                font-family: 'Trebuchet MS', sans-serif;
-            }
+            font-size: 1.5em;
+            text-decoration: none;
+            font-weight: bold;
+            color: black !important;
+            white-space: nowrap; /* Prevents text wrapping */
+            margin-left: 10px;
+            margin-right: 10px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
 
             .collapse {
                 margin-right: 4.5%;

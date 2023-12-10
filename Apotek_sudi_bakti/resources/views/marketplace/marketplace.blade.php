@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Add any additional stylesheets here -->
     <style>
         .card {
@@ -36,7 +37,7 @@
         }
 
         .navbar-link {
-            font-size: 16px;
+            font-size: 1.5em;
             text-decoration: none;
             font-weight: bold;
             color: black !important;
@@ -154,11 +155,15 @@
 
         .search-and-buttons {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         input[type="text"] {
             width: 80%;
+        }
+
+        .btn-primary {
+            color: 
         }
     </style>
 </head>
@@ -202,8 +207,8 @@
             </div>
             <div class="search-and-buttons">
                 <input type="text" id="searchInput" class="form-control text-center mb-3" placeholder="Cari produk">
-                <a href="{{ route('cart.myCart') }}" class="btn btn-primary mb-3">Keranjang</a>
-                <a href="{{ route('orders.myOrders') }}" class="btn btn-primary mb-3">Pesanan</a>
+                <a href="{{ route('cart.myCart') }}" class="btn btn-primary mb-3"><i class='bx bxs-cart' style='color:#ffffff'  ></i></a>
+                <a href="{{ route('orders.myOrders') }}" class="btn btn-primary mb-3"><i class='bx bx-clipboard' style='color:ffffff'></i></a>
             </div>
         </div>
     </div>
@@ -211,7 +216,7 @@
     <hr class="border border-3 opacity-100 mt-2">
 
     <div class="container mt-4">
-        <div class="row">
+        <div class="row d-flex flex-wrap">
             @if(isset($products))
                 @foreach($products as $product)
                     <div class="col-md-3 mb-3">
@@ -221,10 +226,10 @@
                                 <h5 class="card-title text-center">{{ $product->name }}</h5>
                                 <p class="card-title text-center text-muted">{{ $product->price }}</p>
                                 <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }}" id="botan">See Info</button>
+                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#productModal{{ $product->id }}" id="botan"><i class='bx bx-search-alt-2' style='color: white;'></i></button>
                                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary btn-sm" id="botan">Add to Cart</button>
+                                        <button type="submit" class="btn btn-primary btn-sm" id="botan"><i class='bx bx-cart-add' style='color: white;'></i></button>
                                     </form>
                                 </div>
                             </div>

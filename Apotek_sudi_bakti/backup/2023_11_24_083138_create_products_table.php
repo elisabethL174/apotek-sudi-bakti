@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('price');
+            $table->decimal('price', 8, 2);
             $table->string('image')->nullable();
             $table->unsignedBigInteger('stock')->default(0);
             $table->timestamps();

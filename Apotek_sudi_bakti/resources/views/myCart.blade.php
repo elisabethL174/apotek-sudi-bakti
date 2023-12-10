@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
 
-.navbar-logo {
+        .navbar-logo {
             width: 17vw;
             height: 5vw;
             margin-top: 0vh;
@@ -84,7 +84,7 @@
         }
 
         .main {
-            padding: 80px;
+            padding: 1vw;
         }
 
         .content {
@@ -218,11 +218,6 @@
             align-items: center;
         }
 
-        .product-info img {
-            max-height: 50px;
-            margin-right: 10px;
-        }
-
         .text-black{
             margin-top : 20px
         }
@@ -230,6 +225,47 @@
         .custom-tr{
             background-color: var(--bs-success);
         }
+
+        @media (max-width: 768px) {
+            /* Adjust table responsiveness for smaller screens */
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .table-responsive table {
+                width: max-content;
+                max-width: 100%;
+            }
+            .table-responsive-md th,
+            .table-responsive-md td {
+                width: auto;
+                display: block;
+                text-align: center;
+            }
+
+        }
+
+        .content {
+            padding: 10px; /* Adjust padding as needed */
+            max-width: 100%;
+            overflow-x: auto; /* Enable horizontal scroll */
+        }
+
+        span.navbar-toggler-icon {
+            border-radius: 3px;
+            filter: invert(100%); /* Invert the color to turn it white (or your desired color) */
+        }
+
+        .product-name {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            margin-right: 0px;
+        }
+
+        img.img-fluid {
+            margin: 0px;
+        }
+
     </style>
 </head>
 
@@ -266,7 +302,7 @@
         </div>
     </nav>
     <div class="main">
-        <main class="content px-3 py-2">
+        <main class="content">
             <div class="mb-3">
                 <h4>My Cart</h4>
             </div>
@@ -278,7 +314,7 @@
                 @else
                 <div class="card-body shadow p-2">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
                                     <th class="product-column">Product</th>
@@ -292,14 +328,16 @@
                                 @foreach($cartItems->unique('product_id') as $item)
                                 <tr>
                                     <td class="product-info">
-                                        <img src="{{ asset('storage/products'.$item->product->image) }}"
-                                            alt="{{ $item->product->name }}" class="img-fluid">
-                                        <h5>{{ $item->product->name }}</h5>
+                                        <div class="product-name">
+                                            <img src="{{ asset('storage/products'.$item->product->image) }}"
+                                                alt="{{ $item->product->name }}" class="img-fluid">
+                                            <h5>{{ $item->product->name }}</h5>
+                                        </div>
                                     </td>
-                                    <td class="price-column">
-                                        <span id="price{{ $item->product->id }}">${{ $item->product->price }}</span>
+                                    <td class="price-column col-2 col-sm-2 col-md-2">
+                                        <span id="price{{ $item->product->id }}">Rp. {{ $item->product->price }}</span>
                                     </td>
-                                    <td class="quantity-column">
+                                    <td class="quantity-column col-2 col-sm-2 col-md-2">
                                         <div class="input-group">
                                             <input type="number" class="form-control" value="1" min="1"
                                                 id="quantity{{ $item->product->id }}"
@@ -308,12 +346,12 @@
                                             <input type="hidden" id="hiddenQuantity{{ $item->product->id }}" value="1">
                                         </div>
                                     </td>
-                                    <td class="subtotal-column">
+                                    <td class="subtotal-column col-2 col-sm-2 col-md-3">
                                         <span class="subtotal" id="subtotal{{ $item->product->id }}">
                                             Rp. {{ $item->product->price }}
                                         </span>
                                     </td>
-                                    <td class="remove-column">
+                                    <td class="remove-column col-2 col-sm-2 col-md-2">
                                         <button type="button" class="btn btn-danger" onclick="removeProduct('{{ $item->product->id }}')">
                                         <i class='bx bxs-trash' style='color:#ffffff'  ></i>
                                         </button>
@@ -349,14 +387,18 @@
     });
 
     function updateTotalPrice(input) {
-        var productId = input.dataset.productId;
-        var quantity = input.value;
-        var price = document.getElementById('price' + productId).textContent.replace('$', '');
-        var subtotalElement = document.getElementById('subtotal' + productId);
-        var totalPrice = quantity * price;
+    var productId = input.dataset.productId;
+    var quantity = input.value;
+    var priceString = document.getElementById('price' + productId).textContent;
+    // Extract the price from the string (assuming it's in the format 'Rp. XXXX')
+    var price = parseFloat(priceString.replace('Rp. ', '')); // Convert the price to a number
+    var subtotalElement = document.getElementById('subtotal' + productId);
+    var totalPrice = quantity * price;
 
+    // Check if the price extraction returned a valid number
+    if (!isNaN(totalPrice)) {
         // Update subtotal
-        subtotalElement.textContent = '$' + totalPrice;
+        subtotalElement.textContent = 'Rp. ' + totalPrice.toFixed(0); // Display with currency formatting
 
         // Update total price
         updateTotalPriceInCart();
@@ -368,17 +410,23 @@
             // Send an AJAX request to update quantity in the database
             updateDatabaseQuantity(productId, quantity);
         }
+    } else {
+        console.error('Invalid price or quantity');
     }
+}
 
-    function updateTotalPriceInCart() {
-        // Update total price
-        var total = 0;
-        var subtotals = document.querySelectorAll('.subtotal');
-        subtotals.forEach(function (subtotal) {
-            total += parseFloat(subtotal.textContent.replace('$', ''));
-        });
-        document.getElementById('totalPrice').textContent = 'Total Price: $' + total;
-    }
+function updateTotalPriceInCart() {
+    // Update total price
+    var total = 0;
+    var subtotals = document.querySelectorAll('.subtotal');
+    subtotals.forEach(function (subtotal) {
+        var subtotalValue = parseFloat(subtotal.textContent.replace('Rp. ', ''));
+        if (!isNaN(subtotalValue)) {
+            total += subtotalValue;
+        }
+    });
+    document.getElementById('totalPrice').textContent = 'Total Price: Rp. ' + total.toFixed(0);
+}
 
     function updateDatabaseQuantity(productId, quantity) {
         // Send an AJAX request to update quantity in the database
